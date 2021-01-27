@@ -75,9 +75,43 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script>
   // Add your code here!
-  $( document ).ready(function() {
-    console.log( "ready!" );
-});
+  // When the DOM is ready, console.log the message “Let’s get ready to party with jQuery!”
+  $(function() {
+    console.log("Let's get ready to party with jQuery!");
+  });
+
+  // Give all images inside of an article tag the class of image-center
+  $('article').find('img').addClass('image-center');
+
+  // Remove the last paragraph in the article.
+  $('article p').last().remove();
+
+  // Set the font size of the title to be a random pixel size from 0 to 100.
+  $('h1').css({
+    fontSize: `${Math.random() * 100}px`
+  })
+
+  // Add an item to the list; it can say whatever you want.
+  $('aside ol').append('<li>Puppy in a cup!</li>');
+
+  // Empty the aside and put a paragraph in it apologizing for the list’s existence.
+  $('aside ol').remove();
+  $('aside').append('<p>Sorry we did not need a list here. I just wat to talk about how cute puppies are all day long!</p>');
+
+  // When you change the numbers in the three inputs on the bottom, the background color
+  //  of the body should change to match whatever the three values in the inputs are.
+  $('input').on('change paste keyup', function() {
+    let $red = $('input').eq(0).val();
+    let $blue = $('input').eq(1).val();
+    let $green = $('input').eq(2).val();
+    let bodyColor = `rgb(${$red},${$blue},${$green})`
+    $('body').css('background-color', bodyColor);
+  });
+
+  // Add an event listener so that when you click on the image, it is removed from the DOM
+  $('img').on('click', function() {
+    $(this).remove();
+  })
 </script>
 </body>
 
